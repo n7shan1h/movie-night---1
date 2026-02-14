@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to the Theatre 🎬</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at center, #1a1a1a, #000000 80%);
+      font-family: 'Georgia', serif;
+      color: #f5e6e8;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 3s ease forwards;
+      padding: 20px;
+      max-width: 420px;
+    }
+
+    h1 {
+      font-weight: normal;
+      font-size: 28px;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    p {
+      opacity: 0.85;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .enter-btn {
+      background: transparent;
+      border: 1.5px solid #f5c6d0;
+      color: #f5c6d0;
+      padding: 12px 26px;
+      font-size: 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .enter-btn:hover {
+      background: #f5c6d0;
+      color: #000;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stars {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      opacity: 0.6;
+      animation: twinkle 2s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.2; }
+      to { opacity: 0.9; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>welcome, Jiya… 🎞️</h1>
+    <p>
+      the lights are dim, the seats are quiet,
+      and the movie is about to begin.
+      
+      come sit with me before the story starts.
+    </p>
+
+    <button class="enter-btn" onclick="enterTheatre()">
+      enter quietly 🤫
+    </button>
+  </div>
+
+  <script>
+    function enterTheatre() {
+      window.open("https://meet.google.com/wzv-adof-yji?authuser=2", "_blank");
+    }
+
+    // create subtle star field
+    for (let i = 0; i < 40; i++) {
+      const star = document.createElement('div');
+      star.className = 'stars';
+      star.style.top = Math.random() * window.innerHeight + 'px';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.animationDelay = Math.random() * 2 + 's';
+      document.body.appendChild(star);
+    }
+  </script>
+
+</body>
+</html>

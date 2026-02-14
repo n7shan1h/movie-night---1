@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Night With Me? 🎬</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ff4e88, #ff9eb5);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+      border-radius: 24px;
+      padding: 40px 30px;
+      text-align: center;
+      width: 90%;
+      max-width: 420px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1.2s ease;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      opacity: 0.9;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      border: none;
+      padding: 12px 22px;
+      margin: 10px;
+      border-radius: 999px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .yes {
+      background: white;
+      color: #ff4e88;
+      font-weight: bold;
+    }
+
+    .yes:hover {
+      transform: scale(1.08);
+    }
+
+    .no {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      position: relative;
+    }
+
+    .hearts {
+      position: absolute;
+      font-size: 24px;
+      animation: floatUp 4s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0.8; }
+      100% { transform: translateY(-600px) scale(1.5); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="mainCard">
+    <h1>Happy Valentine’s Day 💌</h1>
+    <p>
+      I can’t teleport to you yet (science is slacking),
+      but I *can* steal you for a cozy virtual movie night.
+      
+      Sooo… will you be my movie date tonight? 🎬✨
+    </p>
+
+    <button class="btn yes" onclick="sayYes()">Yes of course 🥹</button>
+    <button class="btn no" id="noBtn" onmouseover="moveNo()">No 🙈</button>
+  </div>
+
+  <div class="card hidden" id="yesCard">
+    <h1>YAYYY 🥳</h1>
+    <p>
+      okay wait… this just made my whole night softer in the nicest way 🥹💖
+      
+      getting to spend quiet little moments like this with you…
+      same movie, same time, just us in our own tiny world…
+      that’s honestly all i wanted tonight.
+      
+      popcorn ready, virtual cuddles included,
+      and for a few hours the distance doesn’t get a say ✨
+      
+      10pm. come sit with me… i’ll be right here waiting 🫶
+    </p>
+  </div>
+
+  <script>
+    function sayYes() {
+      document.getElementById('mainCard').classList.add('hidden');
+      document.getElementById('yesCard').classList.remove('hidden');
+      createHearts();
+    }
+
+    function moveNo() {
+      const btn = document.getElementById('noBtn');
+      const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+      btn.style.position = 'absolute';
+      btn.style.left = x + 'px';
+      btn.style.top = y + 'px';
+    }
+
+    function createHearts() {
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.className = 'hearts';
+        heart.style.left = Math.random() * window.innerWidth + 'px';
+        heart.innerHTML = '💖';
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 4000);
+      }, 300);
+    }
+  </script>
+
+</body>
+</html>
